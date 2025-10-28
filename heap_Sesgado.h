@@ -1,31 +1,38 @@
 #include <iostream>
 using namespace std;
 
+struct Incidente {
+    int prioridad;
+    string descripcion;
+    string ubicacion;
+
+    Incidente(int p, string d, string u)
+        : prioridad(p), descripcion(d), ubicacion(u) {}
+};
+
 struct Nodo {
-    int dato;
+    Incidente dato;
     Nodo* izq;
     Nodo* der;
 
-    Nodo(int dx) : dato(dx), izq(nullptr), der(nullptr) {} 
+    Nodo(Incidente i) : dato(i), izq(nullptr), der(nullptr) {}
 };
+
+Nodo* insertar(Nodo* heap, Incidente incidente) {
+    Nodo* nuevo = new Nodo(incidente);
+    return merge(heap, nuevo);
+}
 
 Nodo* merge(Nodo* h1, Nodo* h2) {
     if (!h1) return h2;
     if (!h2) return h1;
 
-    if (h1->dato > h2->dato)
+    if (h1->dato.prioridad > h2->dato.prioridad)
         swap(h1, h2);
 
     h1->der = merge(h1->der, h2);
-
     swap(h1->izq, h1->der);
-
     return h1;
-}
-
-Nodo* insertar(Nodo* heap, int dx){
-    Nodo* nuevoNodo = new Nodo(dx);
-    return merge(heap, nuevoNodo);
 }
 
 Nodo* eliminarMin(Nodo* head){
