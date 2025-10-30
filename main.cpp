@@ -23,7 +23,7 @@ int main() {
                 getline(cin, desc);
                 cout << "Ubicacion: ";
                 getline(cin, ubi);
-                zonaA = insertar(zonaA, new Incidente(prio, desc, ubi));
+                zonaA = insertar(zonaA, Incidente(prio, desc, ubi));
                 cout << "\nIncidente insertado correctamente.\n";
                 break;
             }
@@ -35,8 +35,8 @@ int main() {
                 break;
             case 4:
                 cout << "\n--- Creando zona B con incidentes de prueba ---\n";
-                zonaB = insertar(zonaB, new Incidente(4, "Incendio leve", "Distrito Norte"));
-                zonaB = insertar(zonaB, new Incidente(2, "Choque multiple", "Avenida Central"));
+                zonaB = insertar(zonaB, Incidente(4, "Incendio leve", "Distrito Norte"));
+                zonaB = insertar(zonaB, Incidente(2, "Choque multiple", "Avenida Central"));
                 cout << "Fusionando zona A con zona B...\n";
                 zonaA = merge(zonaA, zonaB);
                 zonaB = nullptr;
