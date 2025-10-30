@@ -24,7 +24,7 @@ struct Nodo {
 Nodo* merge(Nodo* h1, Nodo* h2);
 
 Nodo* insertar(Nodo* heap, Incidente incidente) {
-    Nodo* nuevo = new Nodo(incidente);
+    Nodo* nuevo = new Nodo(new Incidente(incidente));
     return merge(heap, nuevo);
 }
 
@@ -39,7 +39,7 @@ Nodo* eliminarMin(Nodo* heap){
     cout << "   Ubicacion: " << heap->incidente->ubicacion << endl;
     cout << "   Prioridad: " << heap->incidente->prioridad << endl;
     
-    Nodo *nuevoNodo = merge(head->izq, head->der);
+    Nodo *nuevoNodo = merge(heap->izq, heap->der);
     delete heap->incidente;
     delete heap;
     return nuevoHeap;
