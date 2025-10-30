@@ -42,7 +42,7 @@ Nodo* eliminarMin(Nodo* heap){
     Nodo *nuevoNodo = merge(heap->izq, heap->der);
     delete heap->incidente;
     delete heap;
-    return nuevoHeap;
+    return nuevoNodo;
 }
 
 // Visualizar el incidente más urgente sin eliminarlo
